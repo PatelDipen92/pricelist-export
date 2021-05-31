@@ -10,7 +10,6 @@
 <head>
   <script>
     $(document).ready(function () {
-      console.log("call")
       $("#add").click(function () {
         $("#itemname").val("");
         $("#price").val("");
@@ -27,12 +26,12 @@
   <div class="spacer"></div>
 </div>
 
-<div class="content" role="main" style="background-color: #000000">
+<div class="" role="main">
 
   <div class="card-container">
-    <input type="text" #itemname name="itemname" id="itemname" class="" placeholder="Item Name">
-    <input type="text" #price name="price" id="price" class="Price" placeholder="Item Price">
-    <input class="btn btn-primary" id="add" type="submit" value="Add"
+    <input style="border:1px;margin:2px;" type="text" #itemname name="itemname" id="itemname" class="form-control" placeholder="Item Name">
+    <input style="border:1px;margin:2px;" type="text" #price name="price" id="price" class="form-control Price" placeholder="Item Price">
+    <input class="btn btn-primary" id="add" type="submit" value="Add" style="margin:2px;"
       (click)="addItemPrice(itemname.value, price.value);itemname.value = '';price.value='';">
   </div>
 
@@ -41,59 +40,67 @@
   <div #screen class="body dark-background" style="background-color: #ffffff">
     <div class="outer-border">
       <div class="mid-border">
-       
         <!-- Page Content -->
         <div class="container container-fluid">
           <div class="row">
-            <div class="col-lg-12 text-center">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-6">
-                    <img src="../assets/gs-logo-transparent.png" height="150" width="150"
-                      style="margin-left: auto;margin-right: auto;margin-top: -10px;" />
-                  </div>
-                  <div class="col-6" style="margin-top: 33px;">
-                    <span style="font-weight: bold;font-size: x-large;color: #1572a6;">GUJARAT STEEL</span>
-                    <br><span style="font-weight: bold;font-size: x-medium;color: #1572a6;">Phone: 9879066698</span>
-                  </div>
-                </div>
-                <div style="font-weight: bold; text-align: center; color: #1572a6;">{{currentDate | date:'dd-MM-yyyy'}}
-                </div>
-                <div class="card-container">
-                  <table style="margin-top: -10px;">
-                    <thead style="color: #1572a6;">
-                      <tr>
-                        <th class="card-small"></th>
-                        <th style="text-align: center;">ITEMS</th>
-                        <th style="text-align: center;">PRICE WITH GST</th>
-                        <th *ngIf="isShow"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let item of priceList; ">
-                        <td><span>{{item.index}}.</span></td>
-                        <td><input type="text" value="{{item.name}}" class="" placeholder="Item Name" (keyup)="updateItemName(item.index, $event)"></td>
-                        <td><input type="text" value="{{item.price}}" class="Price" placeholder="Item Price" (keyup)="updateItemPrice(item.index, $event)"></td>
-                        <td *ngIf="isShow"><img src="../assets/delete-icon-png-red.png" height="20" width="20"
-                            (click)="removeItem(item.index)" style="cursor: pointer;" /></td>
-                      </tr>
-                    </tbody>
-                    <tfoot style="font-weight: bold;color: #1572a6;">
-                      <tr>
-                        <td colspan="3">
-                          <br>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path
-                              d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z" />
-                          </svg>
-                          <span> Besides GD Hotel, NH 48, Kabilpore, Navsari</span>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-              </div>
+            <!-- <div class="col-lg-12 text-center"> -->
+            <!-- <div class="row"> -->
+            <div class="col-6">
+              <img src="../assets/gs-logo-transparent.png" height="150" width="150" style="margin-top: -10px;"
+                class="center" />
             </div>
+            <div class="col-6" style="margin-top: 33px;text-align: center;">
+              <span style="font-weight: bold;font-size: x-large;color: #1572a6;">GUJARAT STEEL</span>
+              <br><span style="font-weight: bold;font-size: x-medium;color: #1572a6;">Phone: 9879066698</span>
+            </div>
+            <!-- </div> -->
+            <div class="col-12" style="font-weight: bold; text-align: center; color: #1572a6;margin-bottom: 20px;">
+              {{currentDate | date:'dd-MM-yyyy'}}
+            </div>
+            <div class="col-12" style="overflow-x:auto;">
+              <table class="table">
+                <thead style="color: #1572a6;">
+                  <tr>
+                    <th class=""></th>
+                    <th style="text-align: center; width:300px !important;">ITEMS</th>
+                    <th style="text-align: center; width:300px !important;">PRICE WITH GST</th>
+                    <th *ngIf="isShow"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of priceList; ">
+                    <td><span>{{item.index}}.</span></td>
+                    <td style="width:300px;">
+                      <!-- <textarea class='autoExpand' rows='1' data-min-rows='1' placeholder='Item Name'
+                            value="{{item.name}}" (keyup)="updateItemName(item.index, $event)"></textarea> -->
+                      <input type="text" value="{{item.name}}" class="form-control" placeholder="Item Name"
+                        (keyup)="updateItemName(item.index, $event)">
+                    </td>
+                    <td>
+                      <!-- <textarea class='autoExpand Price' rows='1' data-min-rows='1' placeholder='Item Price'
+                            value="{{item.price}}" (keyup)="updateItemPrice(item.index, $event)"></textarea> -->
+                      <input type="text" value="{{item.price}}" class="form-control Price" placeholder="Item Price"
+                        (keyup)="updateItemPrice(item.index, $event)">
+                    </td>
+                    <td *ngIf="isShow"><img src="../assets/delete-icon-png-red.png" height="20" width="20"
+                        (click)="removeItem(item.index)" style="cursor: pointer;" /></td>
+                  </tr>
+                </tbody>
+                <tfoot style="font-weight: bold;color: #1572a6;">
+                  <tr>
+                    <td colspan="4" style="text-align: center;">
+                      <br>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                          d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z" />
+                      </svg>
+                      <span> Besides GD Hotel, NH 48, Kabilpore, Navsari</span>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- </div> -->
           </div>
         </div>
         <!-- </div> -->
@@ -101,13 +108,17 @@
     </div>
   </div>
 
-  <div id="download">
+  <div id="download" style="display:none">
     <img #canvas>
     <a #downloadLink></a>
   </div>
 
-  <div class="btn btn-primary" (click)="downloadImage()">Download</div>
-
+  <div class="text-center" style="padding: 10px;">
+    <button type="button" class="btn btn-primary" (click)="downloadImage()">Download</button>
+  </div>
+  <!-- <div class="row">
+    <div class="btn btn-primary" (click)="downloadImage()">Download</div>
+  </div> -->
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
